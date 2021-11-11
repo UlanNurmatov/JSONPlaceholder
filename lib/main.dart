@@ -69,20 +69,16 @@ class UsersList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         itemBuilder: (context, index) {
-          return Container(
+          return Card(
+            elevation: 2.0,
             margin: EdgeInsets.all(10.0),
-            color: Colors.black12,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  users[index].username,
-                  style: TextStyle(fontSize: 16),
-                ),
-                Text(users[index].name, style: TextStyle(fontSize: 16))
-              ],
-            ),
+            //color: Colors.black12,
+            child: ListTile(
+                leading: Icon(Icons.person_rounded),
+                title:
+                    Text(users[index].username, style: TextStyle(fontSize: 18)),
+                subtitle:
+                    Text(users[index].name, style: TextStyle(fontSize: 16))),
           );
         },
         itemCount: users.length);
