@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/models/album.dart';
+import 'package:test_app/view/photos_carousel.dart';
 
 class UserAlbums extends StatelessWidget {
   final List<Album> albums;
@@ -20,7 +21,10 @@ class UserAlbums extends StatelessWidget {
                     style: TextStyle(fontSize: 18),
                   ),
                   trailing: Icon(Icons.keyboard_arrow_right_rounded),
-                  onTap: () {}),
+                  onTap: () {
+                     Navigator.push(context,
+              MaterialPageRoute(builder: (context) => PhotosCarousel(albums[index].id)));
+                  }),
             );
           },
           itemCount: albums.length,

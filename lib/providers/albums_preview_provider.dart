@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/models/album.dart';
 import 'package:test_app/models/photo.dart';
-import 'package:test_app/models/post.dart';
 import 'package:test_app/network/http_client.dart';
 import 'package:test_app/providers/users_provider.dart';
 

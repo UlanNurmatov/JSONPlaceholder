@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/models/user.dart';
-import 'package:test_app/network/api.dart';
+import 'package:test_app/models/photo.dart';
 import 'package:test_app/network/http_client.dart';
 import 'package:test_app/providers/users_provider.dart';
 
-class UsersProvider with ChangeNotifier {
-  List<User> _users;
-  List<User> get users => _users;
+class PhotosProvider with ChangeNotifier {
+  List<Photo> _photos;
+  List<Photo> get photos => _photos;
   FetchStatus _status;
   FetchStatus get status => _status;
 
-  UsersProvider() {
-    fetchUsers();
+  PhotosProvider(int id) {
+    fetchPhotos(id);
   }
 
-  fetchUsers() async {
+  fetchPhotos(int id) async {
     _status = FetchStatus.Loading;
     notifyListeners();
     try {
-      _users = await HttpClient.instance.getUsers(Api.users);
+      _photos = await HttpClient.instance.getPhotos(id);
       _status = FetchStatus.Fetched;
       notifyListeners();
     } catch (error) {
