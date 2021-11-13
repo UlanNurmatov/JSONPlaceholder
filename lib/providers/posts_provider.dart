@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/models/user.dart';
-import 'package:test_app/network/api.dart';
+import 'package:test_app/models/post.dart';
 import 'package:test_app/network/http_client.dart';
+import 'package:test_app/providers/users_provider.dart';
 
-class UsersProvider with ChangeNotifier {
-  List<User> _users;
-  List<User> get users => _users;
+class PostsProvider with ChangeNotifier {
+  List<Post> _posts;
+  List<Post> get posts => _posts;
   FetchStatus _status;
   FetchStatus get status => _status;
-
-  UsersProvider() {
-    fetchUsers();
+  PostsProvider(int userId) {
+    fetchPosts(userId);
   }
 
-  fetchUsers() async {
+  fetchPosts(int userId) async {
     _status = FetchStatus.Loading;
     notifyListeners();
     try {
-      _users = await HttpClient.instance.getUsers(Api.users);
+      _posts = await HttpClient.instance.getPosts(userId);
       _status = FetchStatus.Fetched;
       notifyListeners();
     } catch (error) {
@@ -27,5 +26,3 @@ class UsersProvider with ChangeNotifier {
     }
   }
 }
-
-enum FetchStatus { Loading, Fetched, Error }
