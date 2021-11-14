@@ -46,20 +46,21 @@ class _AddCommentBottomSheetState extends State<AddCommentBottomSheet> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    TextButton(
-                        onPressed: () {
-                          if (nameController.text.isNotEmpty &&
-                              emailController.text.isNotEmpty &&
-                              commentController.text.isNotEmpty &&
-                              !isSendingComment) {
-                            sendComment(
-                                nameController.text,
-                                emailController.text,
-                                commentController.text,
-                                widget.postId);
-                          }
-                        },
-                        child: Text('SEND')),
+                    !isSendingComment
+                        ? TextButton(
+                            onPressed: () {
+                              if (nameController.text.isNotEmpty &&
+                                  emailController.text.isNotEmpty &&
+                                  commentController.text.isNotEmpty) {
+                                sendComment(
+                                    nameController.text,
+                                    emailController.text,
+                                    commentController.text,
+                                    widget.postId);
+                              }
+                            },
+                            child: Text('SEND'))
+                        : CircularProgressIndicator(),
                     TextButton(
                         onPressed: () {
                           Navigator.of(context).pop();
