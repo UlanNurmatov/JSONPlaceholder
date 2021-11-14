@@ -9,7 +9,7 @@ class UserAlbums extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Posts')),
+        appBar: AppBar(title: Text('Albums')),
         body: ListView.builder(
           itemBuilder: (context, index) {
             String title = albums[index].title;
@@ -22,8 +22,11 @@ class UserAlbums extends StatelessWidget {
                   ),
                   trailing: Icon(Icons.keyboard_arrow_right_rounded),
                   onTap: () {
-                     Navigator.push(context,
-              MaterialPageRoute(builder: (context) => PhotosCarousel(albums[index].id)));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PhotosCarousel(albums[index].id)));
                   }),
             );
           },

@@ -27,7 +27,7 @@ dependencies:
   http: ^0.12.2
   octo_image: ^0.3.0
   cached_network_image: ^2.5.0
-  hive: ^1.4.4
+  hive: ^1.4.4+1
   hive_flutter: ^0.3.1
   path_provider: ^1.6.28
   provider: ^4.3.3
